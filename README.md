@@ -1,0 +1,2 @@
+# Main_Feed
+This is the first part of the product that a user would typically look at. It includes pictures of the product that can be zoomed into. The user can click on buttons on the side to look at the product in different colors scheme that the product is available in.  It has the available sizes for that product that can be selected. Ultimately the selected item with the correct color scheme and size is placed in the shopping cart.
