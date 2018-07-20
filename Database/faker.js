@@ -1,4 +1,4 @@
-const MAX_NUMBER_OF_SHOES = 200;
+const MAX_NUMBER_OF_SHOES = 100;
 
 const connection = require('./index');
 const faker = require('faker');
@@ -18,9 +18,13 @@ const randomInStockGenerator = () => {
 };
 // console.log(randomInStockGenerator());
 
-const inStockOption = () => {  
-  connection.query('INSERT INTO inStockOptions (inStock) VALUES' + randomInStockGenerator());
-};
+//function to populate the inStockOptions table with random values for the field inStockOption
+const inStockOption = (cb) => {  
+  connection.query('INSERT INTO inStockOptions (inStock) VALUES' + randomInStockGenerator(), function(error) {
+    if (error) throw error;
+    console.log('random values of 0 or 1 have been added to the inStock field');
+  });
+}
 
 inStockOption();
 
@@ -28,5 +32,6 @@ module.exports = {
   inStockOption
 };
 
+connection.end();
 
 
