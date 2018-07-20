@@ -38,7 +38,7 @@ CREATE TABLE Sizes (
 
 -- Table images: This table stores the different images pertaining to a particular shoe
 DROP TABLE IF EXISTS images;
-CREATE TABLE images(
+CREATE TABLE details(
   id INT NOT NULL AUTO_INCREMENT,
   inStock TINYINT NOT NULL,
   imageURL VARCHAR(8000),
