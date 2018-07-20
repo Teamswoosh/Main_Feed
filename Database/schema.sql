@@ -17,35 +17,44 @@ DROP TABLE IF EXISTS colors;
 CREATE TABLE colors(
  id INT NOT NULL AUTO_INCREMENT,
  color VARCHAR(20) NOT NULL,
- id_shoe INT,
+ shoeId INT,
  PRIMARY KEY(id),
- FOREIGN KEY(id_shoe) REFERENCES shoes(id) ON DELETE CASCADE
- 
+ FOREIGN KEY(shoeId) REFERENCES shoes(id) ON DELETE CASCADE 
 );
-
 
 
 -- Table 'sizes': This table stores the different shoe sizes possible.
 DROP TABLE IF EXISTS sizes;                                	
 CREATE TABLE Sizes (
   id INT NOT NULL AUTO_INCREMENT,
-  size INT NOT NULL,
-  id_color INT,
+  MensSize VARCHAR(20) NOT NULL,
+  WomensSize VARCHAR(20) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_color) REFERENCES colors(id) ON DELETE CASCADE  
+   
 );
 
 -- Table images: This table stores the different images pertaining to a particular shoe
 DROP TABLE IF EXISTS images;
 CREATE TABLE images(
   id INT NOT NULL AUTO_INCREMENT,
-  -- inStock TINYINT NOT NULL,
   imageURL VARCHAR(8000),
-  id_shoe INT,
-  id_color INT,
+  shoeId INT,
+  colorId INT,
   PRIMARY KEY(id),
-  FOREIGN KEY (id_shoe) REFERENCES shoes(id) ON DELETE CASCADE,
-  FOREIGN KEY (id_color) REFERENCES colors(id) ON DELETE CASCADE
+  FOREIGN KEY (shoeId) REFERENCES shoes(id) ON DELETE CASCADE,
+  FOREIGN KEY (colorId) REFERENCES colors(id) ON DELETE CASCADE
+);
+
+-- Table 'inStockOptions': This table determines if a shoe in a given color and size is available
+DROP TABLE IF EXISTS inStockOptions;                                	
+CREATE TABLE inStockOptions (
+  id INT NOT NULL AUTO_INCREMENT,
+  inStock TINYINT NOT NULL,
+  imageId INT,
+  sizeId INT,  
+  PRIMARY KEY (id),
+  FOREIGN KEY (imageId) REFERENCES images(id) ON DELETE CASCADE,
+  FOREIGN KEY (sizeId) REFERENCES sized(id) ON DELETE CASCADE,   
 );
 
 -- populate the categories table with the different categories

@@ -3,6 +3,11 @@ const connection = require('./index');
 
 // const mysql_faker = require('mysql-faker');
 
+
+const size = function(cb) {
+  const query = INSERT INTO 
+}
+
 //function to generate a random size 4-13
 const randomSize = faker.random.number({
   min: 4,
