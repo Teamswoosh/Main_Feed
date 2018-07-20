@@ -6,7 +6,7 @@ USE MAIN_FEED;
 DROP TABLE IF EXISTS shoes; 
 CREATE TABLE shoes (
   id INT NOT NULL AUTO_INCREMENT,
-  shoe VARCHAR(200) NOT NULL,
+  shoe VARCHAR(800) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -25,13 +25,13 @@ CREATE TABLE colors(
 
 -- Table 'sizes': This table stores the different shoe sizes possible.
 DROP TABLE IF EXISTS sizes;                                	
-CREATE TABLE Sizes (
+CREATE TABLE sizes(
   id INT NOT NULL AUTO_INCREMENT,
   MensSize VARCHAR(20) NOT NULL,
   WomensSize VARCHAR(20) NOT NULL,
-  PRIMARY KEY (id),
-   
+  PRIMARY KEY (id)  
 );
+
 
 -- Table images: This table stores the different images pertaining to a particular shoe
 DROP TABLE IF EXISTS images;
@@ -54,8 +54,13 @@ CREATE TABLE inStockOptions (
   sizeId INT,  
   PRIMARY KEY (id),
   FOREIGN KEY (imageId) REFERENCES images(id) ON DELETE CASCADE,
-  FOREIGN KEY (sizeId) REFERENCES sized(id) ON DELETE CASCADE,   
+  FOREIGN KEY (sizeId) REFERENCES sizes(id) ON DELETE CASCADE  
 );
+
+
+
+
+
 
 -- populate the categories table with the different categories
 INSERT INTO shoes (shoe, price) VALUES ("HaweJordan 1 Retro High OG", 190);
@@ -85,6 +90,10 @@ INSERT INTO shoes (shoe, price) VALUES ("Hike MYUEXP-X14SE", 222);
 INSERT INTO shoes (shoe, price) VALUES ("HikeYU100 EXP-X14", 100);
 
 -- INSERT INTO colors(color) VALUES(randomColor);
+
+
+
+
 
 
 
