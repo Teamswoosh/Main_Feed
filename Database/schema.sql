@@ -58,10 +58,6 @@ CREATE TABLE inStockOptions (
 );
 
 
-
-
-
-
 -- populate the categories table with the different categories
 INSERT INTO shoes (shoe, price) VALUES ("HaweJordan 1 Retro High OG", 190);
 INSERT INTO shoes (shoe, price) VALUES ("JHike Air Force 270", 150);
@@ -109,6 +105,12 @@ INSERT INTO sizes (MensSize, WomensSize) VALUES ('M16', 'W17.5');
 INSERT INTO sizes (MensSize, WomensSize) VALUES ('M17', 'W18.5');
 INSERT INTO sizes (MensSize, WomensSize) VALUES ('M18', 'W19.5');
 
-
-
+-- populate the colors table with fake data
+INSERT INTO colors (color) VALUES ('black');
+INSERT INTO colors (color) VALUES ('white');
+INSERT INTO colors (color) VALUES ('blue');
+INSERT INTO colors (color) VALUES ('green');
+INSERT INTO colors (color) VALUES ('pink');
+INSERT INTO colors (color) VALUES ('orange');
+INSERT INTO colors (color) VALUES ('yellow');
 
