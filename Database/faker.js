@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const mysql_faker = require('mysql-faker');
+// const mysql_faker = require('mysql-faker');
 
 const randomSize = faker.random.number({
   min: 4,
@@ -21,10 +21,4 @@ const randomColor = (array) => {
 var array = ['blue', 'black', 'pink', 'white', 'orange'];
 console.log(randomColor(array));
 
-
-// var users = (new mysql_faker.Table('users', 1000000));
-// users.name_firstName('firstname')
-//   .name_lastName('lastname')
-
-// mysql_faker.insert([users]);
 
