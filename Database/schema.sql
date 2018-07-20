@@ -89,10 +89,25 @@ INSERT INTO shoes (shoe, price) VALUES ("Hik8uyEpic React Flyknit", 231);
 INSERT INTO shoes (shoe, price) VALUES ("Hike MYUEXP-X14SE", 222);
 INSERT INTO shoes (shoe, price) VALUES ("HikeYU100 EXP-X14", 100);
 
--- INSERT INTO colors(color) VALUES(randomColor);
-
-
-
+-- populate the table sizes with fake data
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M7', 'W8.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M7.5', 'W9');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M8', 'W9.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M8.5', 'W10');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M9', 'W10.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M9.5', 'W11');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M10', 'W11.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M10.5', 'W12');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M11', 'W12.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M11.5', 'W13');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M12', 'W13.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M12.5', 'W14');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M13', 'W14.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M14', 'W15.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M15', 'W16.5.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M16', 'W17.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M17', 'W18.5');
+INSERT INTO sizes (MensSize, WomensSize) VALUES ('M18', 'W19.5');
 
 
 
