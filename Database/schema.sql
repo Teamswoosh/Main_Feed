@@ -1,4 +1,6 @@
 
+
+
 DROP DATABASE IF EXISTS MAIN_FEED;
 CREATE DATABASE MAIN_FEED;
 USE MAIN_FEED;
@@ -37,7 +39,7 @@ CREATE TABLE Sizes (
 );
 
 -- Table images: This table stores the different images pertaining to a particular shoe
-DROP TABLE IF EXISTS images;
+DROP TABLE IF EXISTS details;
 CREATE TABLE details(
   id INT NOT NULL AUTO_INCREMENT,
   inStock TINYINT NOT NULL,
@@ -75,4 +77,8 @@ INSERT INTO shoes (shoe, price) VALUES ("Hikeyut Air Max 270", 154);
 INSERT INTO shoes (shoe, price) VALUES ("Hik8uyEpic React Flyknit", 231);
 INSERT INTO shoes (shoe, price) VALUES ("Hike MYUEXP-X14SE", 222);
 INSERT INTO shoes (shoe, price) VALUES ("HikeYU100 EXP-X14", 100);
+
+-- INSERT INTO colors(color) VALUES(randomColor);
+
+
 
