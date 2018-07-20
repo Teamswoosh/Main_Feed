@@ -49,7 +49,7 @@ CREATE TABLE images(
 DROP TABLE IF EXISTS inStockOptions;                                	
 CREATE TABLE inStockOptions (
   id INT NOT NULL AUTO_INCREMENT,
-  inStock TINYINT NOT NULL,
+  inStock CHAR(100) NOT NULL,
   imageId INT,
   sizeId INT,  
   PRIMARY KEY (id),
