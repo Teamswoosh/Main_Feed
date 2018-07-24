@@ -12,16 +12,14 @@ CREATE TABLE shoes (
 
 ALTER TABLE shoes ADD price INT;
 
+
 -- Table colors stores the different colors possible
 DROP TABLE IF EXISTS colors;
 CREATE TABLE colors(
  id INT NOT NULL AUTO_INCREMENT,
- color VARCHAR(20) NOT NULL,
- shoeId INT,
- PRIMARY KEY(id),
- FOREIGN KEY(shoeId) REFERENCES shoes(id) ON DELETE CASCADE 
+ color VARCHAR(20) NOT NULL, 
+ PRIMARY KEY(id)
 );
-
 
 -- Table 'sizes': This table stores the different shoe sizes possible.
 DROP TABLE IF EXISTS sizes;                                	
@@ -31,7 +29,6 @@ CREATE TABLE sizes(
   WomensSize VARCHAR(20) NOT NULL,
   PRIMARY KEY (id)  
 );
-
 
 -- Table images: This table stores the different images pertaining to a particular shoe
 DROP TABLE IF EXISTS images;
@@ -45,6 +42,8 @@ CREATE TABLE images(
   FOREIGN KEY (colorId) REFERENCES colors(id) ON DELETE CASCADE
 );
 
+
+
 -- Table 'inStockOptions': This table determines if a shoe in a given color and size is available
 DROP TABLE IF EXISTS inStockOptions;                                	
 CREATE TABLE inStockOptions (
@@ -56,7 +55,6 @@ CREATE TABLE inStockOptions (
   FOREIGN KEY (imageId) REFERENCES images(id) ON DELETE CASCADE,
   FOREIGN KEY (sizeId) REFERENCES sizes(id) ON DELETE CASCADE  
 );
-
 
 -- populate the categories table with the different categories
 INSERT INTO shoes (shoe, price) VALUES ("HaweJordan 1 Retro High OG", 190);
@@ -113,4 +111,6 @@ INSERT INTO colors (color) VALUES ('green');
 INSERT INTO colors (color) VALUES ('pink');
 INSERT INTO colors (color) VALUES ('orange');
 INSERT INTO colors (color) VALUES ('yellow');
+
+
 

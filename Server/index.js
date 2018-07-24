@@ -1,9 +1,10 @@
-var express = require('express')
-var app = express()
+let express = require('express');
 
-app.get('/MainFeed', function (req, res) {
+let app = express();
+
+app.get('/MainFeed', (req, res) => {
   res.send('Hello World. I am the server')
-})
+});
 
-console.log('listening on port 3001!')
-app.listen(3001)
+console.log('listening on port 3001!');
+app.listen(3001);
