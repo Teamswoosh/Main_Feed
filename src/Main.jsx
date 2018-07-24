@@ -4,7 +4,6 @@
 // https://drive.google.com/drive/folders/1NNJxzLHb3WsMkMwXl1X0gqOivyxZrHTd
 // https://docs.google.com/document/d/1r8Xc7_D9xNhIaCPR2Kex3yP31m3ZKmX1rzv_rbEOFAE/edit
 import React from 'react';
-import ReactDOM from 'react-dom';
 import style from './styles/style.css';
 import Images from './components/Images.jsx';
 import Thumbs from './components/Thumbs.jsx';
