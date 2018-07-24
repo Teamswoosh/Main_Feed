@@ -9,6 +9,7 @@ import Images from './components/Images.jsx';
 import Thumbs from './components/Thumbs.jsx';
 import Sizes from './components/Sizes.jsx';
 import AddToCart from './components/AddToCart.jsx';
+import NamePrice from './components/NamePrice.jsx';
 
 
 class Main extends React.Component {
@@ -21,16 +22,15 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
-        Nike: 30 days free return!
+      <div className={style.main}>
 
-        <div>
+        <div className={style.images}>
           <Images />
         </div>
 
         <div>
           <div>
-
+            <NamePrice />
             <Thumbs />
           </div>
           <div>

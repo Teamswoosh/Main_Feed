@@ -1,5 +1,5 @@
 module.exports = {
-    "extends": "airbnb",
+    // "extends": "airbnb",
     "rules": {
         "no-plusplus": 0,
     }
