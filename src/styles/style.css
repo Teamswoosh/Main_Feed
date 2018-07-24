@@ -1,5 +1,8 @@
 .main{
   display: flex;
+  margin-top: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .container{
@@ -30,4 +33,17 @@ h6 {
 .NamePrice{
   display: flex;
   justify-content: space-between;
+}
+
+.chooseSizeAndGuide{
+  display: flex;
+  justify-content: space-between;
+}
+
+.chooseSize {
+ font: Arial Narrow, serif;
+}
+
+.sizeGuide{
+  opacity: 0.5;
 }
