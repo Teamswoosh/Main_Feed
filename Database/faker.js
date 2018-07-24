@@ -7,7 +7,8 @@ const faker = require('faker');
 const connection = require('./index');
 
 
-// const mysql_faker = require('mysql-faker');
+const mysql_faker = require('mysql-faker');
+
 
 // helper function to populate the inStockOptions Table
 
@@ -22,17 +23,6 @@ const inStockOpttionsTableValuesGenerator = () => {
   }
   return mainArray.join();
 };
-
-
-// const inStockOpttionsTableValuesGenerator = () => {
-//   const mainArray = [];
-//   for (let i = 0; i < MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
-//     const number = faker.random.number({ min: 0, max: 1 });
-//     mainArray.push(`(${number})`);
-//   }
-//   return MainArray.join();
-// };
-
 
 // function to populate the inStockOptions table with random values for 
 const inStockOptionsTable = () => {
