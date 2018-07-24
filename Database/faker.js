@@ -1,4 +1,5 @@
-const MAX_NUMBER_OF_SHOES = 100;
+const MAX_NUMBER_OF_SHOES = 25;
+const MAX_NUMBER_OF_SHOES_WITH_COLOR = 100;
 
 const faker = require('faker');
 const connection = require('./index');
@@ -9,8 +10,7 @@ const connection = require('./index');
 // helper function to generate a random number 0 or 1 corresponding to 'no' or 'yes'
 const randomInStockGenerator = () => {
   const array = [];
-
-  for (let i = 0; i < MAX_NUMBER_OF_SHOES; i++) {
+  for (let i = 0; i < MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
     const number = faker.random.number({ min: 0, max: 1 });
     array.push(`(${number})`);
   }
@@ -29,31 +29,34 @@ const inStockOption = () => {
 inStockOption();
 
 
-// helper function to generate urls
-const urlGenerator = () => {
-  const array = [];
-  for (let i = 1; i <= MAX_NUMBER_OF_SHOES; i++) {
-    array.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg')`);
+
+
+
+// helper function to generate field values to populate the image table
+const imageTableFieldValuesGenerator = () => {
+  const mainArray = [];
+  for (let i = 1; i <= MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
+    mainArray.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg', ${faker.random.number({ min: 1, max: 25 })}, ${faker.random.number({ min: 1, max: 7 })})`);
   }
-  return array.join();
+  return mainArray.join();
 };
 
-const imageURL = () => {
-  connection.query(`INSERT INTO images (imageURL) VALUES ${urlGenerator()}`, (error) => {
+//main function to populate the images table with imagesUrls, shoeId's and colorid's
+
+const imageTable = () => {
+  connection.query(`INSERT INTO images (imageURL, shoeId, colorId) VALUES ${imageTableFieldValuesGenerator ()}`, (error) => {
     if (error) { throw error; }
-    console.log('imageURLs have been added to the imageURL field');
+    console.log('image table has been seeded');
   });
 };
 
-imageURL();
-
-
-// helper function to
+imageTable();
 
 
 module.exports = {
   inStockOption,
-  imageURL,
+  imageTable,
+  
 };
 
 connection.end();
