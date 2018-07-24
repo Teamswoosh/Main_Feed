@@ -1,4 +1,6 @@
 const MAX_NUMBER_OF_SHOES = 25;
+const MAX_NUMBER_OF_COLORS = 7;
+const MAX_NUMBER_OF_SIZES = 18;
 const MAX_NUMBER_OF_SHOES_WITH_COLOR = 100;
 
 const faker = require('faker');
@@ -7,28 +9,40 @@ const connection = require('./index');
 
 // const mysql_faker = require('mysql-faker');
 
-// helper function to generate a random number 0 or 1 corresponding to 'no' or 'yes'
-const randomInStockGenerator = () => {
-  const array = [];
-  for (let i = 0; i < MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
-    const number = faker.random.number({ min: 0, max: 1 });
-    array.push(`(${number})`);
-  }
-  return array.join();
-};
-// console.log(randomInStockGenerator());
+// helper function to populate the inStockOptions Table
 
-// function to populate the inStockOptions table with random values for the field inStockOption
-const inStockOption = () => {
-  connection.query(`INSERT INTO inStockOptions (inStock) VALUES ${randomInStockGenerator()}`, (error) => {
+const inStockOpttionsTableValuesGenerator = () => {
+  const mainArray = [];
+  for (let i = 1; i <= MAX_NUMBER_OF_SHOES; i++) {
+    for (let j = 1; j <= MAX_NUMBER_OF_COLORS; j++) {
+      for (let k = 1; k <= MAX_NUMBER_OF_SIZES; k++) {        
+        mainArray.push(`(${i}, ${j}, ${k}, ${faker.random.number({ min: 0, max: 1 })})`);
+      }
+    }
+  }
+  return mainArray.join();
+};
+
+
+// const inStockOpttionsTableValuesGenerator = () => {
+//   const mainArray = [];
+//   for (let i = 0; i < MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
+//     const number = faker.random.number({ min: 0, max: 1 });
+//     mainArray.push(`(${number})`);
+//   }
+//   return MainArray.join();
+// };
+
+
+// function to populate the inStockOptions table with random values for 
+const inStockOptionsTable = () => {
+  connection.query(`INSERT INTO inStockOptions (shoeId, colorId, sizeId, inStock) VALUES ${inStockOpttionsTableValuesGenerator()}`, (error) => {
     if (error) { throw error; }
     console.log('random values of 0 or 1 have been added to the inStock field');
   });
 };
 
-inStockOption();
-
-
+inStockOptionsTable();
 
 
 
@@ -54,7 +68,7 @@ imageTable();
 
 
 module.exports = {
-  inStockOption,
+  inStockOptionsTable,
   imageTable,
   
 };

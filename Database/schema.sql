@@ -47,12 +47,14 @@ CREATE TABLE images(
 -- Table 'inStockOptions': This table determines if a shoe in a given color and size is available
 DROP TABLE IF EXISTS inStockOptions;                                	
 CREATE TABLE inStockOptions (
-  id INT NOT NULL AUTO_INCREMENT,
-  inStock CHAR(100) NOT NULL,
-  imageId INT,
+  id INT NOT NULL AUTO_INCREMENT,  
+  shoeId INT,
+  colorId INT,
   sizeId INT,  
+  inStock CHAR(100) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (imageId) REFERENCES images(id) ON DELETE CASCADE,
+  FOREIGN KEY (shoeId) REFERENCES shoes(id) ON DELETE CASCADE,
+  FOREIGN KEY (colorId) REFERENCES colors(id) ON DELETE CASCADE,
   FOREIGN KEY (sizeId) REFERENCES sizes(id) ON DELETE CASCADE  
 );
 
