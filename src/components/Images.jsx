@@ -18,12 +18,14 @@ class Images extends React.Component {
   getImages() {
     axios.get(`/api/imageURLs/${this.props.shoeId}/${this.props.colorId}`)
       .then(results => {
+        console.log(results);
         this.setState({images: results.data});
       })
       .catch(error => console.log('Error: ', error));
   }
 
   render() {
+    console.log('hello');
     return (
       <div className={style.container}>
         {this.state.images.map(image=> 
