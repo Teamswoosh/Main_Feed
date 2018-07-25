@@ -12,33 +12,44 @@ import Sizes from './components/Sizes.jsx';
 import AddToCart from './components/AddToCart.jsx';
 import NamePrice from './components/NamePrice.jsx';
 
+const SHOEID = 1;
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      images: [],
+    this.state = {      
+      colorId: 1,
+      
     };
   }
 
- 
+ handleColorIdChange(color_id) {
+   this.setState({ colorId: color_id})
+ }
+
+
 
   render() {
     return (
       <div className={style.main}>
 
         <div className={style.images}>
-          <Images />
+          <Images colorId={this.state.colorId} shoeId={SHOEID}/>
         </div>
 
         <div>
           <div>
             <NamePrice />
-            <Thumbs />
+            <Thumbs 
+              handleColorIdChange={this.state.handleColorIdChange} 
+              colorId={this.state.colorId} 
+              shoeId={SHOEID}
+              images={this.state.images}
+            />
           </div>
           <div>
 
-            <Sizes />
+            <Sizes colorId={this.state.colorId} />
           </div>
           <div>
 

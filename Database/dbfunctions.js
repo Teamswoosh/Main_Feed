@@ -1,7 +1,7 @@
 const connection = require('./index');
 
-const getImages = (shoeId, colorId, cb) => {
-  const query = `SELECT * FROM images where shoeId = ${shoeId} AND colorId = ${colorId}`;
+const getImageURLs = (shoeId, colorId, cb) => {
+  const query = `SELECT imageURL FROM images where shoeId = ${shoeId} AND colorId = ${colorId}`;
   connection.query(query, (err, results) => {
     if(err) {
       return cb(err);
@@ -11,6 +11,6 @@ const getImages = (shoeId, colorId, cb) => {
 }
 
 module.exports = {
-  getImages
+  getImageURLs
 
 };

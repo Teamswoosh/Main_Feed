@@ -3,7 +3,7 @@ const path = require('path');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
-  filename: "./index.html"
+  filename: "./index.html",
 });
 
 module.exports = {
@@ -12,6 +12,12 @@ module.exports = {
   output: {
     path: path.resolve('dist'),
     filename: 'bundled.js'
+  },
+  devServer: {
+    inline: true,
+    contentBase: './dist',
+    port: 3001,
+    proxy: { "/api/**": { target: 'http://localhost:3001', secure: false } }
   },
   module: {    
     rules: [

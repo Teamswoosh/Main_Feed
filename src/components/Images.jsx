@@ -7,9 +7,7 @@ class Images extends React.Component {
     super(props);
 
     this.state = {
-      imageURLs: [],
-      shoeId: 1,
-      colorId: 1
+      images: [],      
     };
   }
 
@@ -18,9 +16,9 @@ class Images extends React.Component {
   }
 
   getImages() {
-    axios.get(`/imageURLs/${this.state.shoeId}/${this.state.colorId}`)
+    axios.get(`/api/imageURLs/${this.props.shoeId}/${this.props.colorId}`)
       .then(results => {
-        this.setState({imageURLs: results.data});
+        this.setState({images: results.data});
       })
       .catch(error => console.log('Error: ', error));
   }
@@ -28,8 +26,8 @@ class Images extends React.Component {
   render() {
     return (
       <div className={style.container}>
-        {this.state.imageURLs.map(imageURL => 
-          <img src= {imageURL} height='200' width='200' />       
+        {this.state.images.map(image=> 
+          <img src= {image.imageURL} height='200' width='200' />       
         
         )}
         {/* <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />

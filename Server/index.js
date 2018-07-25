@@ -2,18 +2,19 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
-const db = require('../database-mysql');
+const db = require('../Database/dbfunctions');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(express.static(__dirname + '/..dist'));
 
-//get images based on shoeId and colorId
+app.use(express.static(__dirname + '/../dist'));
+
+//get imageURLs based on shoeId and colorId
 app.get('/imageURLs/:shoeId/:colorId', (req, res) => {
-  db.getImages(req.params.shoeId, req.params.colorId, (err, results) => {
+  db.getImageURLs(req.params.shoeId, req.params.colorId, (err, results) => {
     if (err) {console.log('ERROR: ', err); return; }
     res.json(results);
   });
