@@ -8,6 +8,8 @@ class Images extends React.Component {
 
     this.state = {
       imageURLs: [],
+      shoeId: 1,
+      colorId: 1
     };
   }
 
@@ -16,7 +18,7 @@ class Images extends React.Component {
   }
 
   getImages() {
-    axios.get('/imageURLs')
+    axios.get(`/imageURLs/${this.state.shoeId}/${this.state.colorId}`)
       .then(results => {
         this.setState({imageURLs: results.data});
       })

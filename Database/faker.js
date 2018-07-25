@@ -1,7 +1,8 @@
-const MAX_NUMBER_OF_SHOES = 25;
-const MAX_NUMBER_OF_COLORS = 7;
+const MAX_NUMBER_OF_SHOES = 7;
+const MAX_NUMBER_OF_COLORS = 2;
 const MAX_NUMBER_OF_SIZES = 18;
-const MAX_NUMBER_OF_SHOES_WITH_COLOR = MAX_NUMBER_OF_SHOES * MAX_NUMBER_OF_COLORS;
+const MAX_NUMBER_OF_IMAGES_PER_COLOR = 8;
+const MAX_NUMBER_OF_SHOES_WITH_COLOR = MAX_NUMBER_OF_SHOES * MAX_NUMBER_OF_COLORS * MAX_NUMBER_OF_IMAGES_PER_COLOR;
 
 const faker = require('faker');
 const connection = require('./index');
@@ -41,7 +42,7 @@ const imageTableFieldValuesGenerator = () => {
   const mainArray = [];
   for (let i = 1; i < MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
     
-      mainArray.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg', ${(i - 1) % 25 + 1}, ${(i - 1) % 7 + 1})`);
+    mainArray.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg', ${(i - 1) % MAX_NUMBER_OF_SHOES + 1}, ${(i - 1) % MAX_NUMBER_OF_COLORS + 1})`);
     
   }
   return mainArray.join();
@@ -66,11 +67,6 @@ const imageTable = () => {
 };
 
 imageTable();
-
-
-const getImages = () => {
-
-};
 
 
 module.exports = {
