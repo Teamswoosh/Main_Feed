@@ -1,18 +1,48 @@
 import React from 'react';
 import style from "../styles/style.css";
+import axios from 'axios';
 
-const Images = () => (
-    <div className={style.container}>
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg'  height='200' width='200' />
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' /> 
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
-      <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
-  </div>
+class Images extends React.Component {
+  constructor(props) {
+    super(props);
 
-  );
+    this.state = {
+      imageURLs: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getImages();
+  }
+
+  getImages() {
+    axios.get('/imageURLs')
+      .then(results => {
+        this.setState({imageURLs: results.data});
+      })
+      .catch(error => console.log('Error: ', error));
+  }
+
+  render() {
+    return (
+      <div className={style.container}>
+        {this.state.imageURLs.map(imageURL => 
+          <img src= {imageURL} height='200' width='200' />       
+        
+        )}
+        {/* <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' />
+        <img src='https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/94.jpeg' height='200' width='200' /> */}
+      </div>
+
+    );
+  }
+}
+
 
 export default Images;

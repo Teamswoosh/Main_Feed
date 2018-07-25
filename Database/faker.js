@@ -1,7 +1,7 @@
 const MAX_NUMBER_OF_SHOES = 25;
 const MAX_NUMBER_OF_COLORS = 7;
 const MAX_NUMBER_OF_SIZES = 18;
-const MAX_NUMBER_OF_SHOES_WITH_COLOR = 100;
+const MAX_NUMBER_OF_SHOES_WITH_COLOR = MAX_NUMBER_OF_SHOES * MAX_NUMBER_OF_COLORS;
 
 const faker = require('faker');
 const connection = require('./index');
@@ -39,11 +39,24 @@ inStockOptionsTable();
 // helper function to generate field values to populate the image table
 const imageTableFieldValuesGenerator = () => {
   const mainArray = [];
-  for (let i = 1; i <= MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
-    mainArray.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg', ${faker.random.number({ min: 1, max: 25 })}, ${faker.random.number({ min: 1, max: 7 })})`);
+  for (let i = 1; i < MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
+    for (let j = 1; j < MAX_NUMBER_OF_COLORS; j++) {
+      mainArray.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg', ${faker.random.number({ min: 1, max: 25 })}, ${faker.random.number({ min: 1, max: 7 })})`);
+    }
   }
   return mainArray.join();
 };
+
+
+
+
+// const imageTableFieldValuesGenerator = () => {
+//   const mainArray = [];
+//   for (let i = 1; i <= MAX_NUMBER_OF_SHOES_WITH_COLOR; i++) {
+//     mainArray.push(`('https://s3-us-west-1.amazonaws.com/fecmainfeed/Main_feed_ims/${i}).jpeg', ${faker.random.number({ min: 1, max: 25 })}, ${faker.random.number({ min: 1, max: 7 })})`);
+//   }
+//   return mainArray.join();
+// };
 
 //main function to populate the images table with imagesUrls, shoeId's and colorid's
 
@@ -55,6 +68,11 @@ const imageTable = () => {
 };
 
 imageTable();
+
+
+const getImages = () => {
+
+};
 
 
 module.exports = {

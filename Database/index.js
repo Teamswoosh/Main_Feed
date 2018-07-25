@@ -1,8 +1,7 @@
 const mysql = require('mysql');
 const faker = require('faker');
-// const mysql_faker = require('mysql-faker');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
@@ -18,6 +17,5 @@ connection.connect(function (err) {
 
   console.log('connected to mysql');
 });
-
 
 module.exports = connection;
